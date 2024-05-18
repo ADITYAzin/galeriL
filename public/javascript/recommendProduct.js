@@ -12,17 +12,7 @@ whislist.forEach(index => {
     });
 })
 
-loveIcon.forEach(indexlove => {
-    indexlove.addEventListener('click', () => {
-        if(indexlove.classList.contains('fa-plus')){
-            indexlove.classList.remove('fa-regular');
-            indexlove.classList.add('fa-solid');
-        } else if(index.classList.contains('fa-solid')){
-            indexlove.classList.remove('fa-solid');
-            indexlove.classList.add('fa-regular');
-        }
-    });
-})
+
 
 const queryGroup = {
     laptopBox: document.querySelectorAll('.card-laptop'),
