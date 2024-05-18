@@ -12,3 +12,12 @@ ss.forEach((item, i) => {
         sb[i].classList.toggle('putih');
     });
 });
+
+const faplus = document.querySelectorAll('.fa-plus');
+faplus.classlist.add('whislist);
+let check = 'fa-check';
+faplus.addEventListener('click', () => {
+    if(faplus.classList.contains('.whislist'){
+        faplus.classList.replace('fa-plus' , `${check}`
+)}
+});
