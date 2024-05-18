@@ -1,7 +1,10 @@
-const faplus = document.querySelectorAll('.fa-plus');
-faplus.forEach(index => {
+const whislist = document.querySelectorAll('.whislist');
+whislist.forEach(index => {
     index.addEventListener('click', () => {
-        alert('y');
+        if(index.classList.contains('fa-plus')){
+            index.classList.remove('fa-plus');
+            index.classList.add('fa-check');
+        }
     });
 })
 
