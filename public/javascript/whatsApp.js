@@ -2,6 +2,7 @@ const whatsappIcon = document.querySelector('.whatsapp-icn');
 const captionArea = document.querySelector('.caption-area');
 const whatsAppPopup = document.querySelector('.wa-contact-main');
 const backToPage = document.querySelector('.back-to-page');
+const adminProfile = document.querySelector('.admin-profile');
 let styleButtonBack = 'back-to-page transition-all duration-150 ease-out rotate-0';
 let clickButton= 'rotate-180';
 const flexPopup = 'flex'
@@ -12,6 +13,7 @@ let rotateIcon = 'rotate-icon';
 let prsetText = 'Pesan via WhatsApp';
 let presetStyle = 'caption-area bg-green-500 border-4 border-white rounded-br-xl text-center text-ellipis text-nowrap top-1.5 py-2 px-3 text-white absolute shadow-xl';
 
+adminProfile.img = 'image/admin-profile copy.jpeg';
 
 function stylingCaption(){
     captionArea.innerHTML = `${prsetText}`;
