@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri L</title>
+
+    <!--Tailwindcss-->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/public/inputpath/output.css">
+    <script src="inputpath/tailwind.config.js"></script>
+
+         <!--LINK STYLE-->
+         <link rel="stylesheet" href="css/nav.css">
+         <link rel="stylesheet" href="css/swiper-bundle.min.css">
+         <link rel="stylesheet" href="css/swiper-card.css">
+    
+    
+         <!--AOS-->
+         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+         <!--UIKIT-->
+    
+         <link rel="stylesheet" href="uikit/css/uikit.min.css" />
+         <script src="uikit/js/uikit.min.js"></script>
+         <script src="uikit/js/uikit-icons.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+    
+        <!--FONTAWESOME-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      
+        <!--FONT-->
+        <link rel="stylesheet" href="css/font-path.css">
+        <style>
+          
+          .card-laptop{box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;  border-radius: 12px; overflow: hidden;}
+          .stock{ background-color: rgb(241 245 249); transition: all 0.7s ease-in-out; border-bottom: 12px; border-top: 0px; }
+          .stock.putih{ background-color: white; border-top: 12px; border-bottom: 12px;}
+          .deskripsi{height: 0px; position: relative; transition: all 0.4s ease-in-out;}
+          .deskripsi.down-description{height: 228px; }
+          .deskripsi:nth-child(2).down-description{height: 228px; }
+          .deskripsi:nth-child(3).down-description{height: 265px; }
+          .deskripsi:nth-child(4).down-description{height: 320px; }
+          .succes-notification{left: -360px; transition: all 0.3s ;}
+          .succes-notification.show-success{left: 0px;}
+          .popup-product{
+            background-color: rgba(0, 0, 0, 0.486); display: none;}
+          .popup-product.muncul{
+            display: block;
+          }
+
+          .mycart-notification-popup{
+            transition: all ease-out 0.5s;
+            display: block;
+            right: 14px;
+          }
+
+          .mycart-notification-popup.show-cart{
+            display: block;
+          }
+
+          .mycart-notification-popup.gesture{
+            right: -288px;
+
+          }
+          @media only screen and (max-width: 490px){
+        .menu-icon{display: none;}
+        .nav-list p{
+          font-size: 12px;
+        }
+
+
+        }
+        @media only screen and (min-width: 490px){
+          .icon-sm{display: none;}
+        }
+
+        .whatsapp-icn{
+          position: relative;
+          transform: rotate(180deg);
+          transition: all 2s ease-in-out;
+          left: -60px;
+        }
+
+        .whatsapp-icn.click-rotate-again{
+          transform: rotate(0deg);
+          left: 2px;
+        }
+        .whatsapp-icn.rotate-icon{
+          animation: rotateWA 2s ease-out;
+          left: 2px;
+          transform: rotate(0deg)
+        }
+
+        @keyframes rotateWA{
+          0%{transform: rotate(180deg); left: -60px;}
+          50%{transform: rotate(180deg); left: 2px;}
+          100%{transform: rotate(0deg); left: 2px;}
+        }
+        .caption-area{opacity: 0; position: relative; transform: rotateX(80deg); left: 0px; transition: all 1s ease-in-out;}
+        .caption-area.skew-effect{opacity: 1; transform: rotateX(0deg); left: 53px;}
+
+        .wa-contact-main {
+          right: -1440px;
+          transition: all 0.8s ease-in-out;
+        }
+
+        .wa-contact-main.show-contact{
+          right: 0px;
+        }
+        .wa-contact-card{
+          animation: shadow 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes shadow {
+          10%{box-shadow: rgba(255, 0, 0, 0.494) 0px 2px 8px 2px;}
+          20%{box-shadow: rgba(255, 153, 0, 0.494) 0px 2px 8px 2px;}
+          30%{box-shadow: rgba(64, 255, 0, 0.494) 0px 2px 8px 2px;}
+          40%{box-shadow: rgba(0, 195, 255, 0.494) 0px 2px 8px 2px;}
+          50%{box-shadow: rgba(0, 76, 255, 0.494) 0px 2px 8px 2px;}
+          60%{box-shadow: rgba(0, 76, 255, 0.494) 0px 2px 8px 2px;}
+          70%{box-shadow: rgba(0, 195, 255, 0.494) 0px 2px 8px 2px;}
+          80%{box-shadow: rgba(64, 255, 0, 0.494) 0px 2px 8px 2px;}
+          90%{box-shadow: rgba(255, 153, 0, 0.494) 0px 2px 8px 2px;}
+          100%{box-shadow: rgba(255, 0, 0, 0.494) 0px 2px 8px 2px;}
+        }
+        </style>
+</head>
+<body class="mx-auto">
+  
+
+<div class="fixed bottom-0  hidden max-sm:flex left-0 z-30 w-full h-16 bg-white border-t">
+  <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
+      <button type="button" class="nav-items rounded-xl inline-flex flex-col items-center justify-center px-5  border-x dark:hover:bg-pink-200 group ">
+          <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-pink-00 dark:group-hover:text-pink-00" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+          </svg>
+          <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-00 dark:group-hover:text-pink-00">Beranda</span>
+      </button>
+
+      <button type="button" class="nav-items rounded-xl inline-flex flex-col items-center justify-center px-5 border-e  dark:hover:bg-pink-200 group ">
+          <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-pink-00 dark:group-hover:text-pink-00" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M11.074 4 8.442.408A.95.95 0 0 0 7.014.254L2.926 4h8.148ZM9 13v-1a4 4 0 0 1 4-4h6V6a1 1 0 0 0-1-1H1a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h17a1 1 0 0 0 1-1v-2h-6a4 4 0 0 1-4-4Z"/>
+              <path d="M19 10h-6a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1Zm-4.5 3.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM12.62 4h2.78L12.539.41a1.086 1.086 0 1 0-1.7 1.352L12.62 4Z"/>
+          </svg>
+          <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-00 dark:group-hover:text-pink-00">Produk</span>
+      </button>
+
+      <button type="button" class="nav-items rounded-xl inline-flex flex-col items-center justify-center px-5  group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="auto"  class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-40 group-hover:text-pink-00 dark:group-hover:text-pink-00" aria-hidden="true" viewBox="0 0 24 24">
+          <path fill="currentColor" fill-rule="evenodd" d="M14.5 2.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 .75.75v6a.75.75 0 0 1-1.5 0V4.56l-6.72 6.72a.75.75 0 1 1-1.06-1.06l6.72-6.72h-4.19a.75.75 0 0 1-.75-.75" clip-rule="evenodd" />
+          <path fill="currentColor" d="M11.25 2.75c-5.523 0-10 4.477-10 10s4.477 10 10 10s10-4.477 10-10c0-.599-.053-1.185-.154-1.755A2.25 2.25 0 0 1 19 8.75v-.568l-4.159 4.159a2.25 2.25 0 1 1-3.182-3.182L15.818 5h-.568a2.25 2.25 0 0 1-2.245-2.096a10.049 10.049 0 0 0-1.755-.154" />
+        </svg>
+          <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-00 dark:group-hover:text-pink-00">Layanan</span>
+      </button>
+
+      <button type="button" class="nav-items cart-btn  rounded-xl inline-flex flex-col items-center justify-center px-5  dark:hover:bg-pink-200 group border-x ">
+        <svg xmlns="http://www.w3.org/2000/svg" class=" w-5 h-5 mb-2  dark:text-gray-40 group-hover:text-pink-00 dark:group-hover:text-pink-00" aria-hidden="true" width="1.5em" height="auto" viewBox="0 0 20 20">
+          <path fill="currentColor" d="M17 8h1v11H2V8h1V6c0-2.76 2.24-5 5-5c.71 0 1.39.15 2 .42A4.94 4.94 0 0 1 12 1c2.76 0 5 2.24 5 5zM5 6v2h2V6c0-1.13.39-2.16 1.02-3H8C6.35 3 5 4.35 5 6m10 2V6c0-1.65-1.35-3-3-3h-.02A4.98 4.98 0 0 1 13 6v2zm-5-4.22C9.39 4.33 9 5.12 9 6v2h2V6c0-.88-.39-1.67-1-2.22" />
+        </svg>
+          <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-pink-00 dark:group-hover:text-pink-00">Keranjang</span>
+      </button>
+  </div>
+</div>
+
+  
+    <nav class="navi bg-white z-40 flex justify-between max-sm:hidden border border-b">
+        <div class="brand-group flex items-center gap-2 justify-center">
+          <h2 class="brand text-3xl font-bold font-montserrat text-pink-300">Galeri <span class="bg-red-700 text-white px-1.5">L</span></h2>
+        </div>
+        <div id="menu-icon" class="menu-icon">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <ul id="menu-list" class=" hidden show">
+          <li class="nav-list flex flex-col items-center">
+            <i class="icon-sm fa-solid fa-house "  style="font-size: 1.5em;"></i>
+              <p class="">Beranda</p>
+            </li>
+            <li class="nav-list flex flex-col items-center">
+              <i class="icon-sm fa-brands fa-shopify" style="font-size: 1.5em;"></i>
+              <p id="ru" class="">Produk</p>
+            </li>
+            <li class="nav-list flex flex-col items-center">
+              <svg class="icon-sm"  xmlns="http://www.w3.org/2000/svg" width="1.5em" style="color: pink;" height="auto" viewBox="0 0 24 24">
+                <path fill="" fill-rule="evenodd" d="M14.5 2.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 .75.75v6a.75.75 0 0 1-1.5 0V4.56l-6.72 6.72a.75.75 0 1 1-1.06-1.06l6.72-6.72h-4.19a.75.75 0 0 1-.75-.75" clip-rule="evenodd" />
+                <path fill="" d="M11.25 2.75c-5.523 0-10 4.477-10 10s4.477 10 10 10s10-4.477 10-10c0-.599-.053-1.185-.154-1.755A2.25 2.25 0 0 1 19 8.75v-.568l-4.159 4.159a2.25 2.25 0 1 1-3.182-3.182L15.818 5h-.568a2.25 2.25 0 0 1-2.245-2.096a10.049 10.049 0 0 0-1.755-.154" />
+              </svg>
+              <p id="" class="">Layanan</p>
+            </li>
+            <li class="nav-list  flex flex-col items-center cart-btn nav-items">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </li>
+        </ul>
+      </nav>
+
+      <div class="whatsapp fixed flex flex-row top-3/4 w-auto items-center z-40 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="3.97em" height="4em" class="whatsapp-icn z-40" viewBox="0 0 256 258">
+          <defs>
+            <linearGradient id="logosWhatsappIcon0" x1="50%" x2="50%" y1="100%" y2="0%">
+              <stop offset="0%" stop-color="#1faf38" />
+              <stop offset="100%" stop-color="#60d669" />
+            </linearGradient>
+            <linearGradient id="logosWhatsappIcon1" x1="50%" x2="50%" y1="100%" y2="0%">
+              <stop offset="0%" stop-color="#f9f9f9" />
+              <stop offset="100%" stop-color="#fff" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#logosWhatsappIcon0)" d="M5.463 127.456c-.006 21.677 5.658 42.843 16.428 61.499L4.433 252.697l65.232-17.104a122.994 122.994 0 0 0 58.8 14.97h.054c67.815 0 123.018-55.183 123.047-123.01c.013-32.867-12.775-63.773-36.009-87.025c-23.23-23.25-54.125-36.061-87.043-36.076c-67.823 0-123.022 55.18-123.05 123.004" />
+          <path fill="url(#logosWhatsappIcon1)" d="M1.07 127.416c-.007 22.457 5.86 44.38 17.014 63.704L0 257.147l67.571-17.717c18.618 10.151 39.58 15.503 60.91 15.511h.055c70.248 0 127.434-57.168 127.464-127.423c.012-34.048-13.236-66.065-37.3-90.15C194.633 13.286 162.633.014 128.536 0C58.276 0 1.099 57.16 1.071 127.416m40.24 60.376l-2.523-4.005c-10.606-16.864-16.204-36.352-16.196-56.363C22.614 69.029 70.138 21.52 128.576 21.52c28.3.012 54.896 11.044 74.9 31.06c20.003 20.018 31.01 46.628 31.003 74.93c-.026 58.395-47.551 105.91-105.943 105.91h-.042c-19.013-.01-37.66-5.116-53.922-14.765l-3.87-2.295l-40.098 10.513z" />
+          <path fill="#fff" d="M96.678 74.148c-2.386-5.303-4.897-5.41-7.166-5.503c-1.858-.08-3.982-.074-6.104-.074c-2.124 0-5.575.799-8.492 3.984c-2.92 3.188-11.148 10.892-11.148 26.561c0 15.67 11.413 30.813 13.004 32.94c1.593 2.123 22.033 35.307 54.405 48.073c26.904 10.609 32.379 8.499 38.218 7.967c5.84-.53 18.844-7.702 21.497-15.139c2.655-7.436 2.655-13.81 1.859-15.142c-.796-1.327-2.92-2.124-6.105-3.716c-3.186-1.593-18.844-9.298-21.763-10.361c-2.92-1.062-5.043-1.592-7.167 1.597c-2.124 3.184-8.223 10.356-10.082 12.48c-1.857 2.129-3.716 2.394-6.9.801c-3.187-1.598-13.444-4.957-25.613-15.806c-9.468-8.442-15.86-18.867-17.718-22.056c-1.858-3.184-.199-4.91 1.398-6.497c1.431-1.427 3.186-3.719 4.78-5.578c1.588-1.86 2.118-3.187 3.18-5.311c1.063-2.126.531-3.986-.264-5.579c-.798-1.593-6.987-17.343-9.819-23.64" />
+        </svg>
+        <p class="caption-area "></p>
+      </div>
+
+      <div class="wa-contact-main flex justify-center items-center w-full overflow-hidden z-30 fixed" style="background-color: white; height: 100vh;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" class="back-to-page" viewBox="0 0 2048 2048">
+          <rect width="2048" height="2048" fill="none" />
+          <path fill="#d97dc0" d="M960 0q133 0 255 34t230 96t194 150t150 195t97 229t34 256q0 133-34 255t-96 230t-150 194t-195 150t-229 97t-256 34q-133 0-255-34t-230-96t-194-150t-150-195t-97-229T0 960q0-133 34-255t96-230t150-194t195-150t229-97T960 0m0 1792q115 0 221-30t198-84t169-130t130-168t84-199t30-221q0-115-30-221t-84-198t-130-169t-168-130t-199-84t-221-30q-115 0-221 30t-198 84t-169 130t-130 168t-84 199t-30 221q0 115 30 221t84 198t130 169t168 130t199 84t221 30M727 896h681v128H727l278 274l-90 92l-434-430l434-430l90 92z" />
+        </svg>
+      <div class="wa-contact-card z-40 w-full mx-auto bg-white max-w-80 max-sm:max-w-64 overflow-hidden p-4 flex flex-col items-center rounded-xl">
+        <div class="top-section w-full text-center mx-auto">
+          <p class="text-pink-300">Admin Galeri <span class="bg-red-700 text-white px-1.5">L</span></p>
+          <img src="image/3840457-logo-warung-kedai-kita.jpg" class="w-10 h-auto rounded-full mx-auto border-2 border-gray-600 " alt="" srcset="">
+        </div>
+        <div class="center-section w-full mx-auto text-center">
+          <p class="">Scan QR</p>
+        <div class="img max-w-44 h-auto object-fill mx-auto w-full">
+          <img src="image/qr-contact.jpeg" class="object-fill mx-auto w-full" alt="" srcset="">
+        </div></div>
+        <div class="footer-section w-full mx-auto">
+          <p class="my-2 text-orange-400 text-center">Ingin lebih cepat?</p>
+          <div class="form-input flex flex-col items-center">
+          <form
+        action="#"
+        class="mx-auto mb-0 max-w-md space-y-4"
+        onsubmit="sendMessageToWhatsapp()"
+      >
+        <input
+          type="text"
+          class="w-full rounded-lg border border-gray-300 p-4 pe-12 text-sm shadow-sm"
+          placeholder="Masukkan nama anda"
+          id="nama"
+        />
+        <input
+          type="text"
+          class="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm"
+          placeholder="Nama barang: Jumlah"
+          id="pesan"
+        />
+        <input
+          type="text"
+          class="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm"
+          placeholder="Alamat kirim"
+          id="alamat"
+        />
+        <button
+          type="submit"
+          class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white w-full"
+        >
+          Kirim Pesan
+        </button>
+      </form>
+          </div>
+        </div>
+      </div>
+      </div>
+
+        <div class="succes-notification fixed flex flex-row items-center text-white bg-gray-700 w-auto top-20 py-4 px-4 gap-2" style="z-index: 60;">
+          <img src="image/pngwing.com.png" class="w-12 h-auto relaitve" alt="">
+          <p class="montserrat">Berpindah ke Tokopedia <span id="countdown">3</span>s.</p>
+          </div> 
+        
+        <div id="popup-product" class="popup-product mx-auto w-full fixed z-40 " style="height: 100vh;">
+          <div class="preview-parent-card-product bg-white w-11/12 mx-auto z-50 my-auto rounded-md top-1/2 transform relative -translate-y-1/2" style=" box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 2px;">
+            <div class="header-title-navbar-product bg-white w-full h-10 mx-auto relative text-black border-b border-gray-300">
+              <div class="close-window  absolute top-2.5 left-4 "><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
+                <rect width="24" height="24" fill="none" />
+                <path fill="#c7c7c7" d="M12 22c-4.714 0-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12s0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22" opacity="0.5" />
+                <path fill="#808080" d="M8.97 8.97a.75.75 0 0 1 1.06 0L12 10.94l1.97-1.97a.75.75 0 1 1 1.06 1.06L13.06 12l1.97 1.97a.75.75 0 1 1-1.06 1.06L12 13.06l-1.97 1.97a.75.75 0 0 1-1.06-1.06L10.94 12l-1.97-1.97a.75.75 0 0 1 0-1.06" />
+              </svg></div>
+              <p class="title-product-nav pt-2 dm-sans font-bold text-center max-sm:text-sm">Prolink | Wireless Mouse PWM6007</p>
+            </div>
+            <div class="card-content-product w-full bg-white flex items-center justify-center max-lg:flex-wrap">
+              <div class="first-content flex flex-col w-full border border-gray-100">
+                <div class="img-box w-full overflow-hidden object-cover max-lg:hidden"><img src="image/7ad8b5c2-f3ac-4af9-9ac4-773258155206.jpg" class="image-preview mx-auto object-cover w-full max-lg:max-w-32 rounded-xl" style="max-width: 540px;" alt=""></div>
+                
+              </div>
+             <div class="detail-product-area flex flex-col">
+              <div class="nav-of-card-detail bg-white shadow-sm flex items-center justify-around w-full">
+                <div id="details-btn" class="details-nav-box w-full bg-slate-200 rounded-b-lg mx-auto text-center"><p class="montserrat">Detail Produk</p></div>
+                <div id="spek-btn" onclick="scrollBottom()" class="spek-nav-box w-full mx-auto text-center"><p class="montserrat">Spesifikasi</p></div>
+              </div>
+              <div class=" overflow-y-scroll overflow-x-hidden w-full px-4" style="height: 72vh;">
+                <div class="text-content-of-description w-full  " >
+                <p class="deskripsi-text pt-4 text-lg monteserrat font-bold text-pink-500">Deskripsi Produk:</p>
+                <div id="details-content-area"><p class="penjelasan-awal-produk mt-4">PENJELASAN</p>
+                <ol class="penjelasan list-disc mx-6">
+                  <li class="penjelasan-produk-list">Mouse Wireless Prolink PMW6007 dilengkapi sensor optik 800/1200/ 1600DPI yang dapat disetel untuk meningkatkan akurasi.
+                  </li>
+                </ol>
+                <p class="fitur-produk-text mt-4">FITUR</p>
+                <ol class="fitur-produk list-disc mx-6">
+                  <li class="fitur-produk-list mt-2">Kenyamanan Ekstrim:</li>
+                  <p class="fitur-produk-deskripsi">Selalu siap. Biarkan penerima-nano tersambung ke laptop Anda - mouse Anda selalu siap digunakan.
+                    Penerima nano ultra kecil. Hampir tidak terlihat saat plug-in.</p>
+                  <li class="fitur-produk-list mt-2">Kontrol dan Presisi:</li>
+                  <p class="fitur-produk-deskripsi">Scrolling sangat cepat
+                    Terbang melalui dokumen panjang dengan kecepatan tinggi dengan hampir tanpa gesekan roda gulir. Tombol DPI yang Dapat Disesuaikan Cukup tekan tombol DPI untuk memilih kecepatan kursor pilihan Anda 800/1200 / 1600DPI.</p>
+                  <li class="fitur-produk-list mt-2">Penghemat Energi:</li>
+                  <p class="fitur-produk-deskripsi">Masa pakai baterai lebih lama: Hingga 12 bulan (atau lebih lama dengan sakelar Nyala / Mati).
+                    Mode Tidur: Bangunkan mouse dari Mode Tidur dengan mengklik tombol apa saja.</p>
+                  <li class="fitur-produk-list mt-2">Penghemat Energi:</li>
+                  <p class="fitur-produk-deskripsi">Masa pakai baterai lebih lama: Hingga 12 bulan (atau lebih lama dengan sakelar Nyala / Mati).
+                    Mode Tidur: Bangunkan mouse dari Mode Tidur dengan mengklik tombol apa saja.</p>
+                </ol></div>
+                <div class="spek-content-area w-full"><p class="spesifikasi-text pt-4 text-lg monteserrat font-bold text-pink-500">Spesifikasi Produk:</p>
+                  <p class="daya mt-4">TERSEDIA</p>
+                <ol class="list-disc mx-6 text-md text-gray-500">
+                  <li class="technical-spec-list">Buttons 4</li>
+                  <li class="technical-spec-list">Sensor Optical</li>
+                  <li class="technical-spec-list">DPI Resolution 800/1200/1600 DPI</li>
+                  <li class="technical-spec-list">Interface USB</li>
+                  <li class="technical-spec-list">USB Report Rate 125Hz</li>
+                  <li class="technical-spec-list">FPS 2400 times/sec</li>
+                </ol>
+                <p class="dimensi-berat mt-4">DIMENSI & BERAT</p>
+                <ol class="dimensi-berat-group list-disc mx-6 text-md text-gray-500">
+                  <li class="dimensi-berat-list">Dimension 107mm x 58.5mm x 36.8mm (product only)</li>
+                  <li class="dimensi-berat-list">Weight 56g (product only)</li>
+                </ol>
+                <p class="persyaratan-sistem mt-4">PERSYARATAN SISTEM</p>
+                <ol class="persyaratan-sistem-list-group list-disc mx-6 text-md text-gray-500">
+                  <li class="persyaratan-sistem-list">USB Receiver</li>
+                  <li class="persyaratan-sistem-list">Windows 8/10</li>
+                  <li class="persyaratan-sistem-list">Mac OS X 10.10 or later</li>
+                  <li class="persyaratan-sistem-list">Linux® kernel 2.6+</li>
+                  <li class="persyaratan-sistem-list">Linux® kernel 2.6+</li>
+                </ol>
+                <p class="isi-kemasan mt-4">ISI KEMASAN</p>
+                <ol class="isi-kemasan-list-group list-disc mx-6 text-md text-gray-500">
+                  <li class="isi-kemasan-list">1 x PMW6007 - Wireless Optical Mouse</li>
+                  <li class="isi-kemasan-list">1 x USB Receiver</li>
+                  <li class="isi-kemasan-list">1 x AA Alkaline Battery</li>
+                  <li class="isi-kemasan-list">1 x User Manual
+                  </li>
+                </ol></div>
+                </div>
+              </div>
+              <div class="footer-card-detail-product relative w-full flex flex-row items-center justify-around rounded-t-lg py-2 mx-auto bg-slate-50" style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
+                <div class="price flex flex-row gap-1"><p class="price-text text-gray-400">Harga: </p><p class="price-number text-orange-500 montserrat text-xl font-bold"> Rp90.000</p></div>
+                <div class="add-to-cart flex flex-row justify-start items-center gap-1.5 bg-blac border-2 border-black rounded-lg p-1 px-1.5 cursor-pointer"><i id="icon-check" class="fa-solid fa-cart-shopping"></i><p class="cart-text montserrat">Beli barang</p></div>
+              </div>
+             </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative w-full top-20 px-8 max-lg:px-4 h-auto py-10 gap-8 flex-wrap-reverse flex items-center justify-between max-lg:justify-center">
+            <div class="text-content flex flex-col flex-wrap" style="max-width: 509px;">
+                <p class="max-xl:text-3xl text-pink-500">Galeri <span class="bg-red-700 text-white px-1.5">L</span></p>
+                <p class="text-slate-300">#BelanjaKebutuhanHargaTerjangkau</p>
+                <p class="mt-4 mb-6 text-zinc-500">Galeri <span class="bg-red-700 text-white px-1.5">L</span> merupakan website landing page sederhana. Kami yang menyediakan kemudahan belanja yang mudah dan praktis. Ada beberapa produk yang kami jual, seperti aksesoris gadget dengan value barang yang In syaa Allah berkualitas. </p>
+                <div class="shop mb-2 flex flex-row-reverse justify-center items-center bg-black rounded-full px-1.5 py-1 gap-2  text-white">
+                  <a href="#section1" class="scroll-link">Layanan Kami</a>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#ff0000" d="M18 23v-3h-3v-2h3v-3h2v3h3v2h-3v3zM2 20v-6H1v-2l1-5h15l1 5v2h-1v3h-2v-3h-4v6zm2-2h5v-4H4zm-.95-6h12.9zM2 6V4h15v2zm1.05 6h12.9l-.6-3H3.65z"/></svg>
+                </div>
+
+                <div class="product flex flex-row justify-center items-center gap-2 text-black border-2 border-black px-1.5 py-1 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><path fill="#ff0000" d="M17 8h1v11H2V8h1V6c0-2.76 2.24-5 5-5c.71 0 1.39.15 2 .42A4.94 4.94 0 0 1 12 1c2.76 0 5 2.24 5 5zM5 6v2h2V6c0-1.13.39-2.16 1.02-3H8C6.35 3 5 4.35 5 6m10 2V6c0-1.65-1.35-3-3-3h-.02A4.98 4.98 0 0 1 13 6v2zm-5-4.22C9.39 4.33 9 5.12 9 6v2h2V6c0-.88-.39-1.67-1-2.22"/></svg>
+                  <a href="#section2" class="scroll-link">Produk Kami</a>
+                </div>
+            </div>
+
+            <div class="img-boc relative">
+               <img src="image/User10017038 _  Freepik.jpg" class="rounded-l-full w-full relative z-20" style=" max-width: 406px;"  alt="">
+            </div>
+        </div>
+
+        <div id="section1" class="box-card-service w-full mt-32 bg-pink-50 pt-6 pb-12">
+          <div class="text-center text-3xl text-pink-300 montserrat" style="font-weight: 550;">Layanan Kami</div>
+
+          <div  class="service w-full px-6 mx-auto grid grid-cols-6 max-lg:grid-cols-3 place-items-center justify-items-center gap-8 mt-20 ">
+            <div class="card-service bg-slate-200 shadow-lg max-w-20 w-20 py-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="3em" height="auto" viewBox="0 0 24 24"><path fill="#ff0000" d="M4.615 19q-.69 0-1.152-.462Q3 18.075 3 17.385V6.615q0-.69.463-1.152Q3.925 5 4.615 5h14.77q.69 0 1.152.463q.463.462.463 1.152v4.577H4v6.193q0 .23.192.423q.193.192.423.192h8.577v1zM4 8.808h16V6.615q0-.23-.192-.423Q19.615 6 19.385 6H4.615q-.23 0-.423.192Q4 6.385 4 6.615zM19.5 21.5v-3h-3v-1h3v-3h1v3h3v1h-3v3zM4 18V6z"/></svg>
+              <p class="text-center">Top-Up</p>
+            </div>
+            <div class="card-service  bg-slate-200 shadow-lg max-w-20 w-20 py-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="3em" height="3em" viewBox="0 0 32 32"><path fill="#707070" d="M20.755 1H10.62c-1.136 0-2.058.92-2.058 2.058v24.385c0 1.136.92 2.058 2.058 2.058h10.135c1.136 0 2.058-.92 2.058-2.057V3.058A2.058 2.058 0 0 0 20.755 1M14.66 3.264h2.056c.1 0 .183.08.183.18c0 .1-.083.18-.184.18H14.66c-.1 0-.182-.08-.182-.18c0-.1.08-.18.18-.18zm-1.435-.206a.36.36 0 1 1 0 .72a.36.36 0 0 1 0-.72m2.463 25.415a1.44 1.44 0 1 1 0-2.88a1.44 1.44 0 0 1 0 2.88m6.353-4.118a.31.31 0 0 1-.308.31H9.642a.31.31 0 0 1-.308-.31V6.042c0-.17.138-.31.308-.31h12.09c.17 0 .31.14.31.31z"/></svg>
+              <p class="text-center">Pulsa</p>
+            </div>
+            <div class="card-service bg-slate-200 shadow-lg max-w-20 w-20 py-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="3em" height="3em" viewBox="0 0 24 24"><path fill="#6600ff" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2m0 2v2H4V6zM4 18v-6h16v6zm2-4h7v2H6zm9 0h3v2h-3z"/></svg>
+              <p class="text-center">E-Money</p>
+            </div>
+            <div class="card-service bg-slate-200 shadow-lg max-w-20 w-20 py-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="3em" height="auto" viewBox="0 0 24 24"><path fill="#80ea82" d="M12 12.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 0 0 0-7M10.5 16a1.5 1.5 0 1 1 3 0a1.5 1.5 0 0 1-3 0"/><path fill="#80ea82" d="M17.526 5.116L14.347.659L2.658 9.997L2.01 9.99V10H1.5v12h21V10h-.962l-1.914-5.599zM19.425 10H9.397l7.469-2.546l1.522-.487zM15.55 5.79L7.84 8.418l6.106-4.878zM3.5 18.169v-4.34A3.008 3.008 0 0 0 5.33 12h13.34a3.009 3.009 0 0 0 1.83 1.83v4.34A3.009 3.009 0 0 0 18.67 20H5.332A3.01 3.01 0 0 0 3.5 18.169"/></svg>
+              <p class="text-center">Bayar</p>
+            </div>
+            <div class="card-service bg-slate-200 shadow-lg max-w-20 w-20 py-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="3em" height="3em" viewBox="0 0 512 512"><path fill="none" stroke="#ffc800" stroke-miterlimit="10" stroke-width="32" d="M366.05 146a46.7 46.7 0 0 1-2.42-63.42a3.87 3.87 0 0 0-.22-5.26l-44.13-44.18a3.89 3.89 0 0 0-5.5 0l-70.34 70.34a23.62 23.62 0 0 0-5.71 9.24a23.66 23.66 0 0 1-14.95 15a23.7 23.7 0 0 0-9.25 5.71L33.14 313.78a3.89 3.89 0 0 0 0 5.5l44.13 44.13a3.87 3.87 0 0 0 5.26.22a46.69 46.69 0 0 1 65.84 65.84a3.87 3.87 0 0 0 .22 5.26l44.13 44.13a3.89 3.89 0 0 0 5.5 0l180.4-180.39a23.7 23.7 0 0 0 5.71-9.25a23.66 23.66 0 0 1 14.95-15a23.62 23.62 0 0 0 9.24-5.71l70.34-70.34a3.89 3.89 0 0 0 0-5.5l-44.13-44.13a3.87 3.87 0 0 0-5.26-.22a46.7 46.7 0 0 1-63.42-2.32Z"/><path fill="none" stroke="#ffc800" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="m250.5 140.44l-16.51-16.51m60.53 60.53l-11.01-11m55.03 55.03l-11-11.01m60.53 60.53l-16.51-16.51"/></svg>
+              <p class="text-center">Tiket</p>
+            </div>
+            <div class="card-service bg-slate-200 shadow-lg max-w-20 w-20 py-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto" width="3em" height="3em" viewBox="0 0 24 24"><path fill="#ff00f7" d="m17.5 16.82l2.44 1.41l-.75 1.3L16 17.69V14h1.5zM24 17c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-.34.03-.67.08-1H2V4h18v6.68c2.36 1.13 4 3.53 4 6.32m-13.32-3c.18-.36.37-.7.6-1.03c-.09.03-.18.03-.28.03c-1.66 0-3-1.34-3-3s1.34-3 3-3s3 1.34 3 3c0 .25-.04.5-.1.73c.94-.46 1.99-.73 3.1-.73c.34 0 .67.03 1 .08V8a2 2 0 0 1-2-2H6c0 1.11-.89 2-2 2v4a2 2 0 0 1 2 2zM22 17c0-2.76-2.24-5-5-5s-5 2.24-5 5s2.24 5 5 5s5-2.24 5-5"/></svg>
+              <p class="text-center">Tagihan</p>
+            </div>
+            
+          </div>
+        </div>
+
+        <div id="laptop" class="box-product-laptop relative w-full px-8 mt-32">
+          <div class="img-cover relative mx-auto overflow-hidden w-full">
+          <img src="image/abstract-4k_1616870926.jpg.webp" class="hover:scale-x transform transition duration-y hover:scale-100  object-cover rounded-xl mx-auto w-full h-40" alt="" srcset="">
+          <p class="-top-24 relative text-center text-3xl text-pink-300 montserrat" style="font-weight: 550;"> Produk Kami</p>
+          </div>
+          <div class="mt-32 laptop-product-box w-full relative">
+            <p class="text-black text-lg montserrat mb-4 " style="font-weight: 700;">Rekomendasi Laptop Mid Range!</p>
+
+            <div class="box-content relative w-full flex justify-between max-sm:justify-center mx-auto items-center mt-7 gap-y-6 gap-x-8 flex-wrap">
+              <div class="card-laptop bg-slate-100 relative max-w-60 ">
+                <div class="img relative w-full overlfow-hidden object-cover mx-auto rounded-lg">
+                  <img src="https://p4-ofp.static.pub//fes/cms/2024/02/13/7ywrzbm2otj81j2xahv06tv544focl590266.png" alt="" class="mx-auto rounded-xl bg-white"></div>
+                  <div class="card-body flex flex-col">
+                    <p class="brand text-sm font-bold bg-red-600 text-white text-center max-w-24">Lenovo</p>
+                    <span class="pb-0 px-2 text-md">LOQ 15IAX9</span>
+                    <p class="text-sm font-bold text-orange-400 pb-2 px-2 border-b">#Gaming</p>
+                    <div class="deskripsi overflow-hidden px-5 bg-zinc-100 description">
+                      <ul class="">
+                        <li><p class="text-black text-sm">Processor: <p class="text-gray-400 font-thin text-xs">Intel® Core™ i5-12450HX, 8C (4P + 4E) / 12T, P-core up
+                          to 4.4GHz, E-core up to 3.1GHz, 12MB
+                          </p></p></li>
+                        <li><p class="text-black text-sm">GPU: <p class="text-gray-400 font-thin text-xs">Intel Arc A530M 4GB GDDR6 </p></p></li>
+                        <li><p class="text-black text-sm">Memory: <p class="text-gray-400 font-thin text-xs">1x 8GB SO-DIMM DDR5-4800, 2x DDR5 SO-DIMM slots, dual-channel capable. Up to 32GB DDR5-4800</p></p></li>
+                        <li><p class="text-black text-sm">Storage: <p class="text-gray-400 font-thin text-xs">512 GB SSD M.2 2242 PCIe Gen4 QLC, Up to 2x drives, 2x M.2 SSD
+                          • M.2 2242 SSD up to 1TB</p></p></li>
+                        <li><p class="text-black text-sm">Display: <p class="text-gray-400 font-thin text-xs">15.6" FHD (1920 x 1080), IPS, Anti-Glare, Non-Touch, 45%NTSC, 350 nits, 144Hz, Narrow Bezel</p></p></li>
+                      </ul>
+                    </div>
+                    <div class="w-full p-2 rounded-xl flex flex-col stock">
+                    <div class="flex flex-row-reverse items-center justify-between mb-4 border-b border-zinc-600 pb-2">
+                      <p class= "text-green-400">Stok Tersedia</p>
+                      <p class="">Rp 12,569,000</p>
+                    </div>
+                    <div class="flex flex-col justify-between gap-2 pb-2 items-center">
+                      <div class="flex flex-row items-center gap-2 text-white border-2 border-blue-600 text-center rounded- cursor-pointer px-4 show-spek">
+                        <p class="text-center text-blue-600">Lihat Spesifikasi</p>
+                        <i class="fa-regular fa-eye" style="color: rgb(41, 41, 173)"></i>
+                      </div>
+                      <a href="https://www.tokopedia.com/lenovo-official/lenovo-loq-15iax9i-core-i5-12450hx-8gb-512gb-intel-arc-a530m-4gb-8gb-ca057" class="rounded-full text-center bg-black pb-1 px-6 text-white">Pesan Sekarang</a>
+                    </div>
+                  </div>
+
+                  </div>
+              </div>
+              <div class="card-laptop bg-slate-100 relative max-w-60 ">
+                <div class="img bg-white relative w-full overlfow-hidden object-cover mx-auto rounded-lg" style="height: 192px;">
+                  <img src="https://static-ecapac.acer.com/media/catalog/product/a/c/acer-nitro-v-15-anv15-51-non-fingerprint-with-backlit-on-wp-black-01_1_nh.qnasn.001.jpg?optimize=high&bg-color=255,255,255&fit=bounds&height=500&width=500&canvas=500:500" alt="" class="mx-auto rounded-xl h-full" ></div>
+                  <div class="card-body flex flex-col">
+                    <p class="brand text-sm font-bold bg-green-600 text-white text-center max-w-24">Acer</p>
+                    <span class="pb-0 px-2 text-md">Nitro V 15 (ANV15-51)</span>
+                    <p class="text-sm font-bold text-orange-400 pb-2 px-2 border-b">#Gaming</p>
+                    <div class="deskripsi overflow-hidden px-5 bg-zinc-100 description">
+                      <ul class="">
+                        <li><p class="text-black text-sm">Processor: <p class="text-gray-400 font-thin text-xs">Intel® Core™ i5-13420H processor (12MB cache, up to 4.60Ghz)</p></p></li>
+                        <li><p class="text-black text-sm">GPU: <p class="text-gray-400 font-thin text-xs">NVIDIA® GeForce® RTX 2050 with 4GB of GDDR6</p></p></li>
+                        <li><p class="text-black text-sm">Memory: <p class="text-gray-400 font-thin text-xs">1*8GB DDR5</p></p></li>
+                        <li><p class="text-black text-sm">Storage: <p class="text-gray-400 font-thin text-xs">512GB SSD NVMe</p></p></li>
+                        <li><p class="text-black text-sm">Display: <p class="text-gray-400 font-thin text-xs">15.6" FHD LED IPS 144Hz</p></p></li>
+                      </ul>
+                    </div>
+                    <div class="w-full p-2 rounded-xl flex flex-col stock">
+                    <div class="flex flex-row-reverse items-center justify-between mb-4 border-b border-zinc-600 pb-2">
+                      <p class=" text-green-400">Stok Tersedia</p>
+                      <p class="">  Rp 10,525,000</p>
+                    </div>
+                    <div class="flex flex-col justify-between gap-2 pb-2 items-center">
+                      <div class="flex flex-row items-center gap-2 text-white border-2 border-blue-600 text-center rounded- cursor-pointer px-4 show-spek">
+                        <p class="text-center text-blue-600 pb-0.5">Lihat Spesifikasi</p>
+                        <i class="fa-regular fa-eye" style="color: blue"></i>
+                      </div>
+                      <a href="https://store.acer.com/en-id/catalogsearch/result/?q=nitro" class="rounded-full text-center bg-black pb-1 px-6 text-white">Pesan Sekarang</a>
+                    </div>
+                  </div>
+
+                  </div>
+                
+              </div>
+              <div class="card-laptop bg-slate-100 relative max-w-60 ">
+                <div class="img bg-white relative w-full overlfow-hidden object-cover mx-auto rounded-lg" style="height: 192px;">
+                  <img src="https://storage-asset.msi.com/id/picture/Promotion%20NB/nbimg/cyborgOHS.png" alt="" class="mx-auto rounded-xl h-full" ></div>
+                  <div class="card-body flex flex-col">
+                    <p class="brand text-sm font-bold bg-red-600 text-white text-center max-w-24">MSI</p>
+                    <span class="pb-0 px-2 text-md">MSI Cyborg 15 A12UC</span>
+                    <p class="text-sm font-bold text-orange-400 pb-2 px-2 border-b">#Gaming</p>
+                    <div class="deskripsi overflow-hidden px-5 bg-zinc-100 description">
+                      <ul class="">
+                        <li><p class="text-black text-sm">Processor: <p class="text-gray-400 font-thin text-xs">12th Gen Intel® Core™ i5-12450H</p></p></li>
+                        <li><p class="text-black text-sm">GPU: <p class="text-gray-400 font-thin text-xs">NVIDIA® GeForce RTX™ 3050 Laptop GPU 4GB GDDR6, Up to 1172.5MHz Boost Clock 45W Maximum Graphics Power with Dynamic Boost.</p></p></li>
+                        <li><p class="text-black text-sm">Memory: <p class="text-gray-400 font-thin text-xs">16GB (8GB*2, DDR5-4800), MAX 64GB</p></p></li>
+                        <li><p class="text-black text-sm">Storage: <p class="text-gray-400 font-thin text-xs">512GB NVMe PCIe SSD Gen4x4 w/o DRAM</p></p></li>
+                        <li><p class="text-black text-sm">Display: <p class="text-gray-400 font-thin text-xs">15.6″ FHD (1920*1080), 144Hz 45%NTSC IPS-Level</p></p></li>
+                      </ul>
+                    </div>
+                    <div class="w-full p-2 rounded-xl flex flex-col stock">
+                    <div class="flex flex-row-reverse items-center justify-between mb-4 border-b border-zinc-600 pb-2">
+                      <p class= "text-green-400">Stok Tersedia</p>
+                      <p class="">Rp 12,499,000</p>
+                    </div>
+                    <div class="flex flex-col justify-between gap-2 pb-2 items-center">
+                      <div class="flex flex-row items-center gap-2 text-white border-2 border-blue-600 text-center rounded- cursor-pointer px-4 show-spek">
+                        <p class="text-center text-blue-600 pb-0.5">Lihat Spesifikasi</p>
+                        <i class="fa-regular fa-eye" style="color: blue"></i>
+                      </div>
+                      <a href="https://www.tokopedia.com/msi-official/msi-cyborg-15-a12uc-i5-12450h-16gb-512gb-rtx3050-4gb-15-6-144hz-w11?extParam=src%3Dshop%26whid%3D2506520" class="rounded-full text-center bg-black pb-1 px-6 text-white">Pesan Sekarang</a>
+                    </div>
+                  </div>
+
+                  </div>
+                
+              </div>
+              <div class="card-laptop bg-slate-100 relative max-w-60 ">
+                <div class="img relative w-full overlfow-hidden object-cover mx-auto rounded-lg" style="height: 192px;">
+                  <img src="https://p4-ofp.static.pub//fes/cms/2024/02/13/7ywrzbm2otj81j2xahv06tv544focl590266.png" alt="" class="mx-auto rounded-xl bg-white"></div>
+                  <div class="card-body flex flex-col">
+                    <p class="brand text-sm font-bold bg-red-600 text-white text-center max-w-24">Lenovo</p>
+                    <span class="pb-0 px-2 text-md">IDEAPAD Gaming 3 15IAH7</span>
+                    <p class="text-sm font-bold text-orange-400 pb-2 px-2 border-b">#Gaming</p>
+                    <div class="deskripsi overflow-hidden px-5 bg-zinc-100 description">
+                      <ul class="">
+                        <li><p class="text-black text-sm">Processor: <p class="text-gray-400 font-thin text-xs">Intel Core i5-12500H, 12C (4P + 8E) / 16T, P-core
+                          2.5 / 4.5GHz, E-core 1.8 / 3.3GHz, 18MB</p></p></li>
+                        <li><p class="text-black text-sm">GPU: <p class="text-gray-400 font-thin text-xs">NVIDIA® GeForce RTX™ 3050 4GB GDDR6, Boost Clock
+                          1500MHz, TGP 85W, Resizable BAR, Dynamic Boost 2.0, DirectX
+                          12 Ultimate + Intel lris Xe Graphics</p></p></li>
+                        <li><p class="text-black text-sm">Memory: <p class="text-gray-400 font-thin text-xs">1x 8GB SO-DIMM DDR4-3200, DDR4 SO-DIMM slots, dual-channel capable</p></p></li>
+                        <li><p class="text-black text-sm">Storage: <p class="text-gray-400 font-thin text-xs">512GB SSD M.2 2242 PCle 4.0x4 NVMe                        </p></p></li>
+                        <li><p class="text-black text-sm">Display: <p class="text-gray-400 font-thin text-xs">15.6"
+                          FHD IPS 300nits Antiglare 165Hz 100% sRGB,</p></p></li>
+                      </ul>
+                    </div>
+                    <div class="w-full p-2 rounded-xl flex flex-col stock">
+                    <div class="flex flex-row-reverse items-center justify-between mb-4 border-b border-zinc-600 pb-2">
+                      <p class="text-green-400">Stok Tersedia</p>
+                      <p class="">Rp 13,669,000</p>
+                    </div>
+                    <div class="flex flex-col justify-between gap-2 pb-2 items-center">
+                      <div class="flex flex-row items-center gap-2 text-white border-2 border-blue-600 text-center rounded- cursor-pointer px-4 show-spek">
+                        <p class="text-center text-blue-600 pb-0.5">Lihat Spesifikasi</p>
+                        <i class="fa-regular fa-eye" style="color: blue"></i>
+                      </div>
+                      <a href="https://www.tokopedia.com/lenovocirebon/lenovo-ideapad-gaming-3-15iah7-i5-12500-8gb-512gb-ssd-w11-ohs-rtx-3050?utm_source=google&utm_medium=organic&utm_campaign=pdp-seo" class="rounded-full text-center bg-black pb-1 px-6 text-white">Pesan Sekarang</a>
+                    </div>
+                  </div>
+
+                  </div>
+              </div>
+              <div class="card-laptop bg-slate-100 relative max-w-60 ">
+                <div class="img relative overflow-hidden rounded-lg mx-auto w-full" style="height: 192px;">
+                <img src="https://id.store.asus.com/media/catalog/product/v/i/vivobook_pro_15_oled_k6502z_product_photo_2s_cool_silver_05_2.jpg?store=id_ID&image-type=image" class="mx-auto w-full relative" alt="">
+                </div>
+                  <div class="card-body flex flex-col">
+                    <p class="brand text-sm font-bold bg-red-600 text-white text-center max-w-24">Lenovo</p>
+                    <span class="text-lg border-b p-2">Vivobook Pro 15 OLED</span>
+                    <div class="deskripsi overflow-hidden px-5 bg-zinc-100 description">
+                      <ul class="">
+                        <li><p class="text-black text-sm">Processor: <p class="text-gray-400 font-thin text-xs">Intel®Core™ i5-12450H Processor 2.0 GHz (12M Cache, up to 4.4 GHz, 8 cores)</p></p></li>
+                        <li><p class="text-black text-sm">GPU: <p class="text-gray-400 font-thin text-xs">NVIDIA® GeForce® RTX™ 3050 Laptop GPU</p></p></li>
+                        <li><p class="text-black text-sm">Memory: <p class="text-gray-400 font-thin text-xs">16GB DDR4 on board</p></p></li>
+                        <li><p class="text-black text-sm">Storage: <p class="text-gray-400 font-thin text-xs">512GB M.2 NVMe™ PCIe® 4.0 SSD</p></p></li>
+                        <li><p class="text-black text-sm">Display: <p class="text-gray-400 font-thin text-xs">15.6-inch OLED WQHD+ (2880 x 1620) 16:9 aspect ratio 400nits glossy Pantone validated panel</p></p></li>
+                      </ul>
+                    </div>
+                    <div class="w-full p-2 rounded-xl flex flex-col stock">
+                    <div class="flex flex-row-reverse items-center justify-between mb-4 border-b border-zinc-600 pb-2">
+                      <p class= "text-green-400">Stok Tersedia</p>
+                      <p class="">Rp 15,299,000</p>
+                    </div>
+                    <div class="flex flex-col justify-between gap-2 pb-2 items-center">
+                      <div class="flex flex-row items-center gap-2 text-white border-2 border-blue-600 text-center rounded- cursor-pointer px-4 show-spek">
+                        <p class="text-center text-blue-600 pb-0.5">Lihat Spesifikasi</p>
+                        <i class="fa-regular fa-eye" style="color: blue"></i>
+                      </div>
+                      <a href="https://id.store.asus.com/90nb0z62-m006d0-k6502zc-oleds552.html" class="rounded-full text-center bg-black pb-1 px-6 text-white">Pesan Sekarang</a>
+                    </div>
+                  </div>
+
+                  </div>
+              </div>
+              
+            </div></div></div>
+            
+          </div>
+          <p class="text-black text-lg montserrat mb-4 mt-32 mx-6 pl-4" style="font-weight: 700;">Produk Kami</p>
+
+          <div id="section2" class="accessories-container-card w-full relative mx-auto">
+          <div class="uk-position-relative uk-visible-toggle uk-light py-8 mx-auto w-full" tabindex="-1" uk-slider>
+            <ul class="uk-slider-items uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@m uk-grid ">
+           <li class="">
+          <div class="card-product mx-auto bg-pink-100 rounded-xl max-w-56 pb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+            <div class="img-box-product-card w-full relative h-auto overflow-hidden">
+              <img src="image/9965a167-aded-4d9f-a895-51778edaf20e.jpg" class="image-product mx-auto rounded-lg" alt="">
+            </div>
+            <div class="card-product-body mx-auto px-2 flex flex-col">
+              <div class="text-area w-full overflow-hidden my-1" style="height: 1.5rem;">
+                <p class="title-product text-md text-black dm-sans" >Logitech | M220 (Hitam)</p>
+                <p class="text-gray-400 text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, iusto error! Quis voluptatem consequuntur velit molestiae, adipisci beatae pariatur</p>
+              </div>
+              <div class="flex flex-row item-center  rounded-t-lg justify-between">
+                <p class="text-gray-400 font-bold text-base">Rp. 165,000</p>
+               <div class="icon flex flex-row justify-center items-center gap-1">
+                <i class="fa-solid fa-plus bg-black rounded-full mx-auto py-0." style="padding: 1.4px; color: white;"></i>
+                <i class="fa-regular fa-heart" style="color: red;"></i>
+               </div>
+              </div>
+              <div class="btn-show-preview bg-pink-300 hover:bg-pink-600 text-white text-center mx-auto cursor-pointer pb-0.5 rounded-full w-16"><p class="">Lihat</p></div>
+            </div>
+          </div>
+    </li>
+        <li class="">
+          <div class="card-product mx-auto bg-pink-100 rounded-xl max-w-56 pb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+            <div class="img-box-product-card w-full relative h-auto overflow-hidden">
+              <img src="image/7ad8b5c2-f3ac-4af9-9ac4-773258155206.jpg" class="image-product mx-auto rounded-lg" alt="">
+            </div>
+            <div class="card-product-body mx-auto px-2 flex flex-col">
+              <div class="text-area w-full overflow-hidden my-1" style="height: 1.5rem;">
+                <p class="title-product text-md text-black dm-sans" >Prolink | PMW6007 (Putih)</p>
+                <p class="text-gray-400 text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, iusto error! Quis voluptatem consequuntur velit molestiae, adipisci beatae pariatur</p>
+              </div>
+              <div class="flex flex-row item-center  rounded-t-lg justify-between">
+                <p class="text-gray-400 font-bold text-base">Rp. 90,000</p>
+               <div class="icon flex flex-row justify-center items-center gap-1">
+                <i class="fa-solid fa-plus bg-black rounded-full mx-auto py-0." style="padding: 1.4px; color: white;"></i>
+                <i class="fa-regular fa-heart" style="color: red;"></i>
+               </div>
+              </div>
+              <div class="btn-show-preview bg-pink-300 hover:bg-pink-600 text-white text-center mx-auto cursor-pointer pb-0.5 rounded-full w-16"><p class="">Lihat</p></div>
+            </div>
+          </div>
+    </li>
+        <li class="">
+          <div class="card-product mx-auto bg-pink-100 rounded-xl max-w-56 pb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+            <div class="img-box-product-card w-full relative h-auto overflow-hidden">
+              <img src="image/b64c464e-92ef-4a29-bb6e-98b81e99faff.jpg" class="image-product mx-auto rounded-lg" alt="">
+            </div>
+            <div class="card-product-body mx-auto px-2 flex flex-col">
+              <div class="text-area w-full overflow-hidden my-1" style="height: 1.5rem;">
+                <p class="title-product text-md text-black dm-sans" >Prolink | Type-C Cable</p>
+                <p class="text-gray-400 text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, iusto error! Quis voluptatem consequuntur velit molestiae, adipisci beatae pariatur</p>
+              </div>
+              <div class="flex flex-row item-center  rounded-t-lg justify-between">
+                <p class="text-gray-400 font-bold text-base">Rp. 150,000</p>
+               <div class="icon flex flex-row justify-center items-center gap-1">
+                <i class="fa-solid fa-plus bg-black rounded-full mx-auto py-0." style="padding: 1.4px; color: white;"></i>
+                <i class="fa-regular fa-heart" style="color: red;"></i>
+               </div>
+              </div>
+              <div class="btn-show-preview bg-pink-300 hover:bg-pink-600 text-white text-center mx-auto cursor-pointer pb-0.5 rounded-full w-16"><p class="">Lihat</p></div>
+              </div>
+            </div>
+      </li>
+        <li class="">
+          <div class="card-product mx-auto bg-pink-100 rounded-xl max-w-56 pb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+            <div class="img-box-product-card w-full relative h-auto overflow-hidden object-cover">
+              <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2024/3/25/a3fbbfea-b844-48c0-94df-b33148060d0b.jpg" class="image-product mx-auto rounded-lg object-cover w-full" alt="">
+            </div>
+            <div class="card-product-body mx-auto px-2 flex flex-col">
+              <div class="text-area w-full overflow-hidden my-1" style="height: 1.5rem;">
+                <p class="title-product text-md text-black dm-sans" >Hippo | Wireless Earphone</p>
+                <p class="text-gray-400 text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, iusto error! Quis voluptatem consequuntur velit molestiae, adipisci beatae pariatur</p>
+              </div>
+              <div class="flex flex-row item-center  rounded-t-lg justify-between">
+                <p class="text-gray-400 font-bold text-base">Rp. 90,000</p>
+               <div class="icon flex flex-row justify-center items-center gap-1">
+                <i class="fa-solid fa-plus bg-black rounded-full mx-auto py-0." style="padding: 1.4px; color: white;"></i>
+                <i class="fa-regular fa-heart" style="color: red;"></i>
+               </div>
+              </div>
+              <div class="btn-show-preview bg-pink-300 hover:bg-pink-600 text-white text-center mx-auto cursor-pointer pb-0.5 rounded-full w-16"><p class="">Lihat</p></div>
+            </div>
+          </div>
+
+    </li>
+        <li class="">
+          <div class="card-product mx-auto bg-pink-100 rounded-xl max-w-56 pb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+            <div class="img-box-product-card w-full relative overflow-hidden object-cover">
+              <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2024/3/26/2e313087-0039-44e5-b8c2-3f34a42e80e1.jpg" class="image-product mx-auto rounded-lg w-full h-full" alt="">
+            </div>
+            <div class="card-product-body mx-auto px-2 flex flex-col">
+              <div class="text-area w-full overflow-hidden my-1" style="height: 1.5rem;">
+                <p class="title-product text-md text-black dm-sans" >Prolink | Car Charger</p>
+                <p class="text-gray-400 text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, iusto error! Quis voluptatem consequuntur velit molestiae, adipisci beatae pariatur</p>
+              </div>
+              <div class="flex flex-row item-center  rounded-t-lg justify-between">
+                <p class="text-gray-400 font-bold text-base">Rp. 175,000</p>
+               <div class="icon flex flex-row justify-center items-center gap-1">
+                <i class="fa-solid fa-plus bg-black rounded-full mx-auto py-0." style="padding: 1.4px; color: white;"></i>
+                <i class="fa-regular fa-heart" style="color: red;"></i>
+               </div>
+              </div>
+              <div class="btn-show-preview bg-pink-300 hover:bg-pink-600 text-white text-center mx-auto cursor-pointer pb-0.5 rounded-full w-16"><p class="">Lihat</p></div>
+            </div>
+          </div>
+    </li>
+        <li class="mx-auto">
+            <div class="card-product mx-auto bg-pink-100 rounded-xl max-w-56 pb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+              <div class="img-box-product-card w-full relative h-auto overflow-hidden object-cover">
+                <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2024/3/26/69f29f68-33ab-43f8-8f68-7f5f3f9b002e.jpg" class="image-product mx-auto rounded-lg w-full h-auto" alt="">
+              </div>
+              <div class="card-product-body mx-auto px-2 flex flex-col">
+                <div class="text-area w-full overflow-hidden my-1" style="height: 1.5rem;">
+                  <p class="title-product text-md text-black dm-sans" >Hippo | Car Charger</p>
+                  <p class="text-gray-400 text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, iusto error! Quis voluptatem consequuntur velit molestiae, adipisci beatae pariatur</p>
+                </div>
+                <div class="flex flex-row item-center  rounded-t-lg justify-between">
+                  <p class="text-gray-400 font-bold text-base">Rp. 150,000</p>
+                 <div class="icon flex flex-row justify-center items-center gap-1">
+                  <i class="fa-solid fa-plus bg-black rounded-full mx-auto py-0." style="padding: 1.4px; color: white;"></i>
+                  <i class="fa-regular fa-heart" style="color: red;"></i>
+                 </div>
+                </div>
+                <div class="btn-show-preview bg-pink-300 hover:bg-pink-600 text-white text-center mx-auto cursor-pointer pb-0.5 rounded-full w-16"><p class="">Lihat</p></div>
+              </div>
+            </div>
+      </li>
+        <li class="">
+          <div class="card-product mx-auto bg-pink-100 rounded-xl max-w-56 pb-2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+            <div class="img-box-product-card w-full relative h-auto overflow-hidden object-cover">
+              <img src="https://images.tokopedia.net/img/cache/200-square/VqbcmM/2024/3/25/298286e9-fdb5-4357-a617-defbad29c6cc.jpg" class="image-product mx-auto rounded-lg w-full h-auto" alt="">
+            </div>
+            <div class="card-product-body mx-auto px-2 flex flex-col">
+              <div class="text-area w-full overflow-hidden my-1" style="height: 1.5rem;">
+                <p class="title-product text-md text-black dm-sans" >Prolink | PWM6007 (Hitam)</p>
+                <p class="text-gray-400 text-xs">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, iusto error! Quis voluptatem consequuntur velit molestiae, adipisci beatae pariatur</p>
+              </div>
+              <div class="flex flex-row item-center rounded-t-lg justify-between">
+                <p class="text-gray-400 font-bold text-base">Rp. 90,000</p>
+               <div class="icon flex flex-row justify-center items-center gap-1">
+                <i class="fa-solid fa-plus bg-black rounded-full mx-auto py-0." style="padding: 1px 1.2px; color: white;"></i>
+                <i class="fa-regular fa-heart" style="color: red;"></i>
+               </div>
+              </div>
+              <div class="btn-show-preview bg-pink-300 hover:bg-pink-600 text-white text-center mx-auto cursor-pointer pb-0.5 rounded-full w-16"><p class="">Lihat</p></div>
+          </div>
+          </div>
+    </li>
+    </ul>
+
+    <a class="uk-position-center-left uk-position-small" style="color: rgb(66, 66, 195);" href uk-slidenav-previous uk-slider-item="previous"></a>
+    <a class="uk-position-center-right uk-position-small" style="color: rgb(66, 66, 195);" href uk-slidenav-next uk-slider-item="next"></a>
+    </div></div>
+    
+    <footer class="mt-32 w-full relative bg-pink-200 flex max-lg:flex-wrap items-center  rounded-t-lg">
+      <div class="text-3xl text-white font-bold font-montserrat w-full "><p class="object-cover rounded-tl-lg py-36 montserrat text-center mx-auto" style="background-image: url(image/3840x2160-abstract-color-art-4k_1616870926.jpg);">Galeri <span class="bg-red-700 text-white px-1.5">L</span></p></div>
+
+      <div class="grid grid-cols-2 max-sm:grid-cols-1 max-md:justify-center mx-4 max-md:mx-4 gap-6 py-3.5">
+        <div class="about-brand ">
+          <p class="uppercase text-pink-500 font-semibold">tentang kami:</p>
+          <p class="text-gray-600 italic">Galeri <span class="bg-red-700 text-white px-1.5">L</span> merupakan website landing page sederhana yang dibangun sejak Maret 2024, dikembangkan oleh aditya. Sementara ini kami hanya menjual aksesoris gadget.</p>
+        </div>
+        <div class="marketplace">
+          <p class="uppercase text-pink-500 font-semibold">Market Kami:</p>
+          <div class="flex gap-1.5 mt-4 items-center justify-start">
+            <a href="https://www.tokopedia.com/galerilofficial" class=""><img src="https://www.freepnglogos.com/uploads/logo-tokopedia-png/tokopedia-apa-itu-startup-pengertian-cara-memulai-dan-1.png" class="bg-white max-w-28 p-1" alt="" srcset=""></a>
+            <a href="" class=""><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Shopee.svg/2560px-Shopee.svg.png" class="bg-white max-w-28 p-1" alt="" srcset=""></a>
+          </div>
+        </div>
+        <div class=""><p class="text-pink-500 uppercase font-semibold">produk kami:</p>
+          <ol class="italic text-gray-500 list-inside text-sm" style="list-style-type:circle">
+            <div class="grid grid-cols-3 max-lg:grid-cols-2">
+            <li class="">Logitech M220</li>
+            <li class="">Prolink PWM6007</li>
+            <li class="">Prolink G10001</li>
+            <li class="">Prolink 335502</li>
+            <li class="">Hippo Lance 2</li>
+            <li class="">Hippo Mono-V1</li></div>
+          </ol>
+        </div>
+        <div class="developer-contact ">
+          <p class="text-3xl dm-sans font-bold max-w-56 px-0.5 text-center rounded-r-md bg-white text-violet-400">aditya's project</p>
+          <p class="uppercase text-pink-500 font-semibold">Kontak developer:</p>
+          <div class="gmail flex items-center gap-1.5"><i class="fa-solid fa-envelope"></i><a href="" class="">adityapratamaputra.id@gmail.com</a></div>
+          <div class="instagram flex items-center gap-1.5"><i class="fa-brands fa-square-instagram"></i><a href="" class="">@shaundeji</a></div>
+        </div>
+      </div>
+    </footer>
+        <script src="javascript/pageEffectClone.js"></script>
+        <script src="javascript/recommendProduct.js"></script>
+        <script src="javascript/whatsApp.js"></script>
+        <script src="javascript/timer.js"></script>
+        <script defer src="javascript/track.js"></script>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+    const scrollLinks = document.querySelectorAll('.scroll-link');
+    const offset = 180; // Adjust this value based on your header height or desired offset
+
+    scrollLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            const targetPosition = targetElement.offsetTop - offset;
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        });
+    });
+});
+
+
+        </script>
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <!--NAVBAR-->
+        <script src="javascript/nav.js"></script>
+        <!--ICONIFY-->
+        <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+         <!--CIRCLE-->
+        <!--SCROLL-->
+        <script src="javascript/scroll.js"></script>
+        <!--UIKIT-->
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+         <!-- UIkit JS -->
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/js/uikit-icons.min.js"></script>
+
+        <script src="javascript/dateportfolio.js"></script>
+</body>
+</html>

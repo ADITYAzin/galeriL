@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Next Page</title>
+</head>
+<body>
+  <h1>Welcome to the Next Page</h1>
+  <p>This page will automatically redirect to the next page in <span id="countdown">10</span> seconds.</p>
+  <p>If you don't want to wait, you can click the <a href="#" id="nextLink">Next</a> link.</p>
+
+  <script>
+    // Function to redirect to the next page
+    function redirectToNextPage() {
+      window.location.href = "https://www.pngwing.com/en/free-png-aqouw#google_vignette"; // Change "next_page.html" to your next page URL
+    }
+
+    // Timer function
+    function startTimer(duration, display) {
+      var timer = duration, minutes, seconds;
+      setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+          timer = 0; // Timer expired
+          redirectToNextPage();
+        }
+      }, 1000);
+    }
+
+    // Start the timer when the page loads
+    document.addEventListener("DOMContentLoaded", function () {
+      var tenSeconds = 10, // Change this value to the desired countdown time in seconds
+          display = document.querySelector('#countdown');
+      startTimer(tenSeconds, display);
+
+      // Click event for the Next link
+      document.getElementById("nextLink").addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default link behavior
+        redirectToNextPage(); // Redirect to the next page immediately
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+<div class="mycart-notification-popup fixed max-w-96 h-auto z-30 -top-96 right-3.5  block" style="float: right; background-color: #ECF0F1; box-shadow: rgba(0, 0, 0, 0.153) 0px 2px 12px;">
+  <div class="mycart-content flex flex-col justify-between w-full">
+    <div class="nav-cart h-18 w-full bg-white border-b border-gray-300 rounded-b-md py-2 px-1 ">
+      <i class="fa-solid fa-xmark  cursor-pointer bg-pink-400 absolute -top-2.5 -left-2.5 rounded-full px-1 py-0.5"></i>
+      <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="auto" class="top-48 close-cart absolute rounded-l-xl rounded-r-none bg-pink-400 pl-1 pr-0" viewBox="0 0 24 24"><path fill="currentColor" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225z"/></svg>
+      <p class="text-pink-400 montserrat text-center" style="font-weight: 500;">Keranjang Saya</p>
+    </div>
+    <div class="items-content-cart w-full flex flex-col gap-2 overflow-y-scroll" style="height: 22rem;">
+      <div class="items-product-added-content block w-full bg-white h-14">
+        <div class="items-product-added-content flex flex-row items-center justify-between gap-2 px-2">
+          <div class="img-items-product-added object-cover overflow-hidden w-8 border border-gray-400">
+            <img src="image/9965a167-aded-4d9f-a895-51778edaf20e.jpg" alt="">
+          </div>
+          <div class="text-group-items-product-added w-full flex flex-col overflow-x-hidden" style="width: 191px;">
+            <div class="title-product-cart w-full overflow-x-hidden bg-pink-200">
+              <p class="text-black">Logitech M220</p>
+            </div>
+            <div class="sub-text flex flex-row-reverse items-center justify-end gap-2">
+              <i class="fa-solid fa-trash text-red-500"></i>
+              <p class="price-items-text">Rp165,000</p>
+            </div>
+          </div>
+          <div class="quantity flex items-center gap-1 text-center">
+            <span class="w-3 bg-black text-white  rounded-full">-</span>
+            <span class="w-3 text-slate-300">1</span>
+            <span class="w-3 bg-black text-white  rounded-full">+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-content-cart bg-white rounded-t-lg w-full h-16 flex flex-row justify-between px-4 items-center">
+      <div class="left-section flex flex-col items-start justify-start text-start">
+        <p class="total-text font-bold text-sm text-pink-200">total:</p>
+        <p class="total-items text-black text-lg">Rp 00,000</p>
+      </div>
+      <div class="right-section cursor-pointer border-2 border-pink-500 px-1.5 py-0.5 font-medium text-lg cursor text-pink-500 rounded-md ">
+        <p class="">Checkout</p>
+      </div>
+    </div>
+  </div>
+ </div>
