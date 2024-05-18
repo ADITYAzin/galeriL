@@ -5,8 +5,7 @@ whislist.forEach(index => {
             index.classList.remove('fa-plus');
             index.classList.add('fa-check');
         } else if(index.classList.contains('fa-check')){
-            index.classList.remove('fa-check');
-            index.classList.add('fa-plus');
+            index.classList.remove('fa-check') = index.classList.add('fa-plus');
         }
     });
 })
