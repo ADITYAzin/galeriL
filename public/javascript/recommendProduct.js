@@ -1,11 +1,8 @@
 const whislist = document.querySelectorAll('.whislist');
 whislist.forEach(index => {
     index.addEventListener('click', () => {
-        if(index.classList.contains('fa-plus')){
-            index.classList.remove('fa-plus');
-            index.classList.add('fa-check');
-        } else if(index.classList.contains('fa-check')){
-            index.classList.remove('fa-check') = index.classList.add('fa-plus');
+        if(index.classList.contains('whislist')){
+            [index.classList.remove('fa-plus'), index.classList.add('fa-check')] = [index.classList.remove('fa-check'), index.classList.add('fa-plus')];
         }
     });
 })
