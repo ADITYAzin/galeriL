@@ -1,3 +1,10 @@
+const faplus = document.querySelectorAll('.fa-plus');
+faplus.forEach(index => {
+    index.addEventListener('click', () => {
+        alert('y');
+    });
+})
+
 const queryGroup = {
     laptopBox: document.querySelectorAll('.card-laptop'),
     showsSpek: document.querySelectorAll('.show-spek'),
@@ -13,11 +20,3 @@ ss.forEach((item, i) => {
     });
 });
 
-const faplus = document.querySelectorAll('.fa-plus');
-faplus.classlist.add('whislist);
-let check = 'fa-check';
-faplus.addEventListener('click', () => {
-    if(faplus.classList.contains('.whislist'){
-        faplus.classList.replace('fa-plus' , `${check}`
-)}
-});
