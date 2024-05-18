@@ -3,7 +3,7 @@ whislist.forEach(index => {
     index.addEventListener('click', () => {
         if(index.classList.contains('fa-plus')){
             index.classList.remove('fa-plus');
-            index.classList.add('fa-check');
+            index.classList.toggle('fa-check');
         }
     });
 })
