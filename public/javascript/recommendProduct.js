@@ -1,8 +1,19 @@
 const whislist = document.querySelectorAll('.whislist');
 const loveIcon = document.querySelectorAll('.love-icon');
+loveIcon.forEach((element)=>{
+    element.addEventListener('click', () => {
+        alert('ya');
+    });
+})
 whislist.forEach(index => {
     index.addEventListener('click', () => {
-        alert('y');
+        if(index.classList.contains('fa-plus')){
+            index.classList.remove('fa-plus');
+            index.classList.add('fa-check');
+        } else if(index.classList.contains('fa-check')){
+            index.classList.remove('fa-check');
+            index.classList.add('fa-plus');
+        }
     });
 })
 
