@@ -473,6 +473,6 @@ function buyThisItems(linkDestination, seconds){
 function refreshPage() {
       // Merefresh halaman
       window.location.reload();
+  window.onload();
   };
   
-  window.refreshPage();
