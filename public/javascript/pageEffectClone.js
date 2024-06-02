@@ -475,4 +475,4 @@ function refreshPage() {
       window.location.reload();
   };
   
-  window.onload();
+  window.refreshPage();
