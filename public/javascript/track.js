@@ -20,7 +20,6 @@ const iconInstall = document.querySelector('.icon-download-component');
 iconInstall.addEventListener('click', () => notifDesign.style.display = 'block'
 );
 
-closeX.addEventListener('click', () => notifDesign.style.display = 'none');
 
 const cardBX = document.querySelectorAll('.cardbx');
 
