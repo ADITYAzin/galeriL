@@ -9,7 +9,7 @@ const list = document.getElementsByTagName('li')[1];
 const ruu = list.querySelector('a');
 const notifications = document.querySelector('.notification');
 const card = document.querySelector(".card-notif");
-const closeButton = card.querySelector("#close");
+const closeButton = document.querySelector("#close");
 
 //
 
