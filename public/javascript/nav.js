@@ -19,9 +19,7 @@ list.addEventListener('click', () => {
 
 });
 
-closeButton.addEventListener("click", () =>{
-  notifications.style.display = 'none';
-});
+
 
 
 //CATATAN:
