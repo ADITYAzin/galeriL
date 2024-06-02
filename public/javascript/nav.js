@@ -28,17 +28,3 @@ list.addEventListener('click', () => {
 //APABILA INGIN MEMBUAT POPUP MAKA BERIKAN DISPLAY NONE DAN MENAMBHKANNYA DENGAN
 
 
-const darkTgl = document.getElementById('dark-toggle');
-const body = document.querySelector('body');
-const html = document.querySelector('html');
-
-
-darkTgl.addEventListener('click', () =>{
-  if(darkTgl.checked){
-    body.classList.add('dark');
-  } else{
-    body.classList.remove('dark');
-
-}});
-
-

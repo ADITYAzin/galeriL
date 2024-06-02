@@ -1,17 +1,15 @@
+// Import diperlukan module dari Tailwind CSS
 const { addDynamicIconSelectors } = require('@iconify/tailwind');
 
-/** @type {import('tailwindcss').Config} */
-
+// Ekspor konfigurasi Tailwind CSS
 module.exports = {
   content: [
     "./src/**/*.{html,js}",
-    "./node_modules/flowbite/**/*.js" ,
-
-],
+    "./node_modules/flowbite/**/*.js",
+  ],
   darkMode: 'class',
   theme: {
     extend: {
-      
       fontFamily: {
         'chillax': ['chillax'],
         'satoshi': ['satoshi'],
@@ -20,7 +18,7 @@ module.exports = {
     },
   },
   plugins: [
-    // Iconify plugin
+    // Menggunakan plugin Iconify
     addDynamicIconSelectors(),
-],
-}
+  ],
+};
