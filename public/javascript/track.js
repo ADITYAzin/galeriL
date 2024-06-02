@@ -17,8 +17,6 @@ const closeX = document.querySelector('.close-x');
 const notifDesign = document.querySelector('.notification-design');
 const iconInstall = document.querySelector('.icon-download-component');
 
-iconInstall.addEventListener('click', () => notifDesign.style.display = 'block'
-);
 
 
 const cardBX = document.querySelectorAll('.cardbx');
